@@ -40,7 +40,7 @@ jobs:
       run: |
         make clean packed ${{ matrix.flags }}
         echo PACKING...
-        7z a -t7z BIN_${{ matrix.flags }}_.7z hello.elf compressed.elf
+        7z a -t7z "BIN_${{ matrix.flags }}_.7z" hello.elf compressed.elf
 
     - name: Upload artifacts
       if: ${{ success() }}
