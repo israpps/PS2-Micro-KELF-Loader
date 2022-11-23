@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  push:
+    branches: 
+      - '*'
+    tags:
+      - v*
+  pull_request:
+  repository_dispatch:
+    types: [run_build]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+      fail-fast: false
+        docker_tag: [v1.0, v1.1, v1.2.0, latest]
+        flags: [
+          DUMMY_LIBC_INIT=1, 
+          DUMMY_TIMEZONE=1, 
+          KERNEL_NOPATCH=1, 
+          NEWLIB_NANO=1, 
+          KERNEL_NOPATCH=1 NEWLIB_NANO=1,
+          KERNEL_NOPATCH=1 NEWLIB_NANO=1 DUMMY_LIBC_INIT=1,
+          KERNEL_NOPATCH=1 NEWLIB_NANO=1 DUMMY_TIMEZONE=1,  
+          DEFAULT=1
+          ]
+
+    container: ps2dev/ps2dev:${{ matrix.docker_tag }}
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install dependencies
+      run: |
+        apk add build-base 7zip
+
+    - name: Compile project
+      run: |
+        make clean packed ${{ matrix.flags }}
+
+    - name: pack project
+      run: |
+        7z a -t7z BIN_${{ matrix.flags }}_.7z *.ELF
+
+    - name: Upload artifacts
+      if: ${{ success() }}
+      uses: actions/upload-artifact@v2
+      with:
+        name: hello
+        path: *.7z
