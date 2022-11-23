@@ -23,6 +23,8 @@ int main()
    void _ps2sdk_args_parse(int argc, char ** argv) {}
 #endif
 
+PS2_DISABLE_AUTOSTART_PTHREAD();
+
 #ifndef KELFPATH
 #error please define the KELF path in the KELFPATH macro
 #endif
