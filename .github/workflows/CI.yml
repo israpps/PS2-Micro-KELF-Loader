@@ -14,8 +14,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     strategy:
-      matrix:
       fail-fast: false
+      matrix:
         docker_tag: [v1.0, v1.1, v1.2.0, latest]
         flags: [
           DUMMY_LIBC_INIT=1, 
