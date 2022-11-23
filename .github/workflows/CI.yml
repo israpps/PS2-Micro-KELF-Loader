@@ -34,19 +34,18 @@ jobs:
 
     - name: Install dependencies
       run: |
-        apk add build-base 7zip
-
+        apk add build-base p7zip
+    
     - name: Compile project
       run: |
         make clean packed ${{ matrix.flags }}
-
-    - name: pack project
-      run: |
+        echo PACKING...
         7z a -t7z BIN_${{ matrix.flags }}_.7z *.ELF
 
     - name: Upload artifacts
       if: ${{ success() }}
       uses: actions/upload-artifact@v2
       with:
-        name: hello
-        path: *.7z
+        name: TEST
+        path: |
+          BIN_*_.7z
