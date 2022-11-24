@@ -1,4 +1,10 @@
+#include <tamtypes.h>
 #include <kernel.h>
+#include <sifrpc.h>
+#include <loadfile.h>
+#include <fileio.h>
+#include <stdlib.h>
+#include <libmc.h>
 #include <fcntl.h>
 #include <stdio.h>
 #include <string.h>
