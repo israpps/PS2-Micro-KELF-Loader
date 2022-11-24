@@ -1,7 +1,9 @@
 #include <kernel.h>
 #include <stdio.h>
 
-#define KELFPATH "mc?:/PS2BBL/PS2BBL.KELF"
+#ifndef KELFPATH
+#define KELFPATH "mc?:/BAEXEC-SYSTEM/osdmain.elf"
+#endif
 
 int main()
 {
