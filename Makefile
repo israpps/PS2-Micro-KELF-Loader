@@ -8,9 +8,9 @@
 
 # Makefile borrowed from https://github.com/fjtrujy/helloWorldPS2
 
-EE_BIN = hello.elf
-EE_BIN_PACKED = compressed.elf
-EE_BIN_STRIPPED = stripped.elf
+EE_BIN = PS2MKL.ELF
+EE_BIN_PACKED = compressed_$(EE_BIN)
+EE_BIN_STRIPPED = stripped_$(EE_BIN)
 
 EE_OBJS = main.o
 EE_CFLAGS = -Os
