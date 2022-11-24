@@ -24,7 +24,7 @@ jobs:
     
     - name: Compile project
       run: |
-        make clean packed DUMMY_LIBC_INIT=1
+        make clean packed KERNEL_NOPATCH=1 NEWLIB_NANO=1 DUMMY_LIBC_INIT=1,
         echo PACKING...
         7z a -t7z "${{ github.event.repository.name }}.7z" *.ELF
 
