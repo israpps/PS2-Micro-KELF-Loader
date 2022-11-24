@@ -26,7 +26,7 @@ jobs:
       run: |
         make clean packed DUMMY_LIBC_INIT=1
         echo PACKING...
-        7z a -t7z "${{ github.event.repository.name }}.7z" hello.elf compressed.elf
+        7z a -t7z "${{ github.event.repository.name }}.7z" *.ELF
 
     - name: Create release
       if: github.ref == 'refs/heads/main'
