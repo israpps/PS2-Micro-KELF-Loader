@@ -29,6 +29,12 @@ int exist(char *filepath)
 int main()
 {
 #ifndef IGNORE_MULTI_MCSLOT_CHECK
+	SifInitRpc(0);
+    SifLoadModule("rom0:SIO2MAN", 0, NULL);
+	SifLoadModule("rom0:MCMAN", 0, NULL);
+	SifLoadModule("rom0:MCSERV", 0, NULL);
+    mcInit(MC_TYPE_MC);
+    
     char KELF[64] = KELFPATH;
     if (!strncmp(KELF, "mc?", 3)) // starts with mc?. check on slot 1
     {

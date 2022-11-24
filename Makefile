@@ -18,6 +18,7 @@ EE_CFLAGS += -fdata-sections -ffunction-sections
 # EE_LDFLAGS += -nodefaultlibs -Wl,--start-group -lc_nano -lps2sdkc -lkernel-nopatch -Wl,--end-group
 EE_LDFLAGS += -s
 EE_LDFLAGS += -Wl,--gc-sections
+EE_LIBS = -lmc -lc
 
 ifeq ($(DUMMY_TIMEZONE), 1)
    EE_CFLAGS += -DDUMMY_TIMEZONE
