@@ -11,7 +11,7 @@ int main()
     char *args[4] = {"-m rom0:SIO2MAN", "-m rom0:MCMAN", "-m rom0:MCSERV", KELFARG};
     sprintf(KELFARG, "-x %s", KELFPATH);
     LoadExecPS2("moduleload", 4, args);
-   
+   while(1);
    return 0;
 }
 
