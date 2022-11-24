@@ -1,14 +1,7 @@
 name: CI
 
 on:
-  push:
-    branches: 
-      - '*'
-    tags:
-      - v*
-  pull_request:
-  repository_dispatch:
-    types: [run_build]
+  workflow_dispatch:
 
 jobs:
   build:
