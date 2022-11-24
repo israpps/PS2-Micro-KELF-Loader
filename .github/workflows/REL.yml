@@ -28,12 +28,13 @@ jobs:
         echo PACKING...
         7z a -t7z "${{ github.event.repository.name }}.7z" hello.elf compressed.elf
 
-      - name: Create release
-        if: github.ref == 'refs/heads/main'
-        uses: marvinpinto/action-automatic-releases@latest
-        with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "latest"
-          title: "Latest development build"
-          files: |
-            ${{ github.event.repository.name }}.7z
+    - name: Create release
+      if: github.ref == 'refs/heads/main'
+      uses: marvinpinto/action-automatic-releases@latest
+      with:
+        repo_token: "${{ secrets.GITHUB_TOKEN }}"
+        automatic_release_tag: "latest"
+        title: "Latest development build"
+        files: |
+          ${{ github.event.repository.name }}.7z
+            
